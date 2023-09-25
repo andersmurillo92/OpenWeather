@@ -11,7 +11,9 @@ import android.view.WindowManager
 import android.view.animation.AccelerateInterpolator
 import com.openweather.R
 import com.openweather.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity: AppCompatActivity() {
 
     lateinit var binding : ActivitySplashBinding
