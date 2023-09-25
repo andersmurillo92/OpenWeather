@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(private val weatherUseCase: WeatherUseCa
         viewModelScope.launch {
             try {
                 val result: ForecastModel? = weatherUseCase()
-                result
+                forecast.value = result
             } catch (e: Exception){
                 Log.e(TAG, "Exception $e")
             }
