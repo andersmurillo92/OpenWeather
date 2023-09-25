@@ -16,14 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200"
             android:scaleType="centerCrop"
-            android:background="@drawable/sky_background"
+            android:background="@drawable/sky"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <View
+            android:id="@+id/divider"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_200"
-            android:background="@color/color_primary_translucent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/main_background"/>
 
         <ImageView
             android:id="@+id/weather_icon"
@@ -46,6 +47,10 @@
             android:text="---"
             android:textSize="@dimen/dp_32"
             android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
             app:layout_constraintTop_toTopOf="@id/weather_icon"
             app:layout_constraintStart_toEndOf="@id/weather_icon"/>
 
@@ -59,6 +64,10 @@
             android:text="---"
             android:textSize="@dimen/sp_32"
             android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
             app:layout_constraintTop_toTopOf="@id/weather_icon"
             app:layout_constraintStart_toEndOf="@id/weather_temp"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -71,6 +80,10 @@
             android:text="-----"
             android:textSize="@dimen/sp_18"
             android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
             app:layout_constraintTop_toBottomOf="@id/weather_name"
             app:layout_constraintStart_toStartOf="@id/weather_temp"
             app:layout_constraintEnd_toEndOf="@id/weather_name"/>
