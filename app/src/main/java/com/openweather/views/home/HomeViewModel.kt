@@ -17,6 +17,7 @@ class HomeViewModel @Inject constructor(private val weatherUseCase: WeatherUseCa
         private const val TAG = "HomeViewModel"
     }
 
+    val isLoading = MutableLiveData<Boolean>()
     val forecast = MutableLiveData<ForecastModel?>()
 
     fun onCreate(){
@@ -26,8 +27,11 @@ class HomeViewModel @Inject constructor(private val weatherUseCase: WeatherUseCa
     private fun getForecast(){
         viewModelScope.launch {
             try {
+                isLoading.value = true
+
                 val result: ForecastModel? = weatherUseCase()
                 forecast.value = result
+                isLoading.value = false
             } catch (e: Exception){
                 Log.e(TAG, "Exception $e")
             }
