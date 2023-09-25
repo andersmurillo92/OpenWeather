@@ -14,9 +14,8 @@
         android:theme="@style/Theme.OpenWeather"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.splash.SplashActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.OpenWeather.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
