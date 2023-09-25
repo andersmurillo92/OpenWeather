@@ -1,5 +1,7 @@
 package com.openweather.views.splash
 
+import android.app.Activity
+import android.content.Intent
 import androidx.databinding.DataBindingUtil
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.view.WindowManager
 import android.view.animation.AccelerateInterpolator
 import com.openweather.R
 import com.openweather.databinding.ActivitySplashBinding
+import com.openweather.views.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -59,7 +62,12 @@ class SplashActivity: AppCompatActivity() {
 
         val mHandler1 = Handler()
         mHandler1.postDelayed({
-            // TODO("Go to min activity")
-        }, 1750)
+            goToActivity(HomeActivity::class.java)
+            finish()
+        }, 3000)
+    }
+
+    private fun <T: Activity>goToActivity(classType: Class<T>) {
+        startActivity(Intent(this, classType))
     }
 }
