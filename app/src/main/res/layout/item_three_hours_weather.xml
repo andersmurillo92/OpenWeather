@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_100"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/dp_16"
+    app:cardBackgroundColor="@color/color_primary"
+    app:cardCornerRadius="@dimen/dp_16"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="@dimen/dp_8">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:padding="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_16"
+            android:scaleType="fitXY"
+            android:background="@drawable/darker_circled_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/weather_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="center"
+            android:text="---"
+            android:textSize="@dimen/sp_18"
+            android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            app:layout_constraintTop_toBottomOf="@id/weather_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/weather_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="---"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            app:layout_constraintTop_toBottomOf="@id/weather_temp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
