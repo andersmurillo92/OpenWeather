@@ -45,7 +45,8 @@ class HomeActivity: AppCompatActivity(), UIBehavior, UIBehavior.RecyclerView, It
             it?.let {
                 binding.weatherTemp.text = "${it.list[0].main?.temp?.floatToInt().toString()} °C,"
                 binding.weatherName.text = it.list[0].weather[0].main.toString()
-                binding.weatherBrief.text = it.list[0].weather[0].description.toString()
+                binding.weatherBrief.text = it.list[0].weather[0].description.toString().capitalize()
+                binding.weatherMain.text = "Pressure: ${it.list[0].main?.pressure.toString()} hPa\nHumidity: ${it.list[0].main?.humidity.toString()}%"
                 Picasso.get().load("$baseURLImage${it.list[0].weather[0].icon}.png")
                     .into(binding.weatherIcon)
 
