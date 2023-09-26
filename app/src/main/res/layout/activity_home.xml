@@ -50,7 +50,7 @@
             android:shadowColor="@color/color_primary_dark"
             android:shadowDx="3"
             android:shadowDy="3"
-            android:shadowRadius="3"
+            android:shadowRadius="2"
             app:layout_constraintTop_toTopOf="@id/weather_icon"
             app:layout_constraintStart_toEndOf="@id/weather_icon"/>
 
@@ -67,7 +67,7 @@
             android:shadowColor="@color/color_primary_dark"
             android:shadowDx="3"
             android:shadowDy="3"
-            android:shadowRadius="3"
+            android:shadowRadius="2"
             app:layout_constraintTop_toTopOf="@id/weather_icon"
             app:layout_constraintStart_toEndOf="@id/weather_temp"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -83,7 +83,7 @@
             android:shadowColor="@color/color_primary_dark"
             android:shadowDx="3"
             android:shadowDy="3"
-            android:shadowRadius="3"
+            android:shadowRadius="2"
             app:layout_constraintTop_toBottomOf="@id/weather_name"
             app:layout_constraintStart_toStartOf="@id/weather_temp"
             app:layout_constraintEnd_toEndOf="@id/weather_name"/>
@@ -92,9 +92,11 @@
             android:id="@+id/days_forecasted"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_background" />
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            app:layout_constraintTop_toBottomOf="@id/main_background"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
