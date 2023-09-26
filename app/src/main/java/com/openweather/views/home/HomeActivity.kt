@@ -43,7 +43,7 @@ class HomeActivity: AppCompatActivity(), UIBehavior, UIBehavior.RecyclerView, It
 
         viewModel.forecast.observe(this) {
             it?.let {
-                binding.weatherTemp.text = "${it.list[0].main?.temp?.floatToInt().toString()} °F,"
+                binding.weatherTemp.text = "${it.list[0].main?.temp?.floatToInt().toString()} °C,"
                 binding.weatherName.text = it.list[0].weather[0].main.toString()
                 binding.weatherBrief.text = it.list[0].weather[0].description.toString()
                 Picasso.get().load("$baseURLImage${it.list[0].weather[0].icon}.png")
