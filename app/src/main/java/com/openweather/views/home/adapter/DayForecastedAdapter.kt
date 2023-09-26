@@ -46,7 +46,6 @@ class DayForecastedAdapter(private val itemActionListener: ItemActionListener) :
 
         fun bind(item: List<ThreeHoursDataModel>) {
             with(binding) {
-                // TODO("Transform string to date")
                 dateTitle.text = item[0].dt_txt?.toDate().toString().capitalize()
 
                 val adapter = ThreeHoursWeatherAdapter(itemActionListener)

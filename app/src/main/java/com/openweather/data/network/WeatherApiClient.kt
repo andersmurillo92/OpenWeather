@@ -7,8 +7,6 @@ import retrofit2.http.Query
 
 interface WeatherApiClient {
 
-    // TODO("Remove hardcoded values")
-
     @GET("forecast?")
     suspend fun getWeatherData(@Query("lat") latitude: String,
                        @Query("lon") longitude: String,
