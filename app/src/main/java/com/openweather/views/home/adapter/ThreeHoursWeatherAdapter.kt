@@ -10,6 +10,7 @@ import com.openweather.data.model.baseURLImage
 import com.openweather.databinding.ItemThreeHoursWeatherBinding
 import com.openweather.views.interfaces.ItemActionListener
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
 
 class ThreeHoursWeatherAdapter(private val itemActionListener: ItemActionListener) : RecyclerView.Adapter<ThreeHoursWeatherAdapter.ViewHolder>() {
 
@@ -44,9 +45,20 @@ class ThreeHoursWeatherAdapter(private val itemActionListener: ItemActionListene
         private val binding = ItemThreeHoursWeatherBinding.bind(view)
 
         fun bind(item: ThreeHoursDataModel) {
-            binding.weatherTemp.text = "${item.main?.temp.toString()} °F"
-            binding.weatherHour.text = item.dt.toString()
+            binding.weatherTemp.text = "${item.main?.temp?.floatToInt().toString()} °C"
+            binding.weatherHour.text = "${item.dt_txt?.toDate().toString()}"
             Picasso.get().load("$baseURLImage${item.weather[0].icon}.png").into(binding.weatherIcon)
+        }
+
+        private fun String.floatToInt(): Int {
+            return this.toFloat().toInt()
+        }
+
+        private fun String.toDate(): String {
+            val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val formatter = SimpleDateFormat("hh a")
+
+            return formatter.format(parser.parse(this))
         }
     }
 }

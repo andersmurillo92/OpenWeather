@@ -9,6 +9,7 @@ import com.openweather.R
 import com.openweather.data.model.ThreeHoursDataModel
 import com.openweather.databinding.ItemDayForecastedBinding
 import com.openweather.views.interfaces.ItemActionListener
+import java.text.SimpleDateFormat
 
 class DayForecastedAdapter(private val itemActionListener: ItemActionListener) : RecyclerView.Adapter<DayForecastedAdapter.ViewHolder>() {
 
@@ -45,14 +46,20 @@ class DayForecastedAdapter(private val itemActionListener: ItemActionListener) :
 
         fun bind(item: List<ThreeHoursDataModel>) {
             with(binding) {
-                // TODO("Transform string to date")
-                dateTitle.text = item[0].dt
+                dateTitle.text = item[0].dt_txt?.toDate().toString().capitalize()
 
                 val adapter = ThreeHoursWeatherAdapter(itemActionListener)
                 weatherRecycler.layoutManager = LinearLayoutManager(parent.context, RecyclerView.HORIZONTAL, false)
                 weatherRecycler.adapter = adapter
                 adapter.onUpdateData(item)
             }
+        }
+
+        private fun String.toDate(): String {
+            val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val formatter = SimpleDateFormat("EEEE, dd MMMM")
+
+            return formatter.format(parser.parse(this))
         }
     }
 }

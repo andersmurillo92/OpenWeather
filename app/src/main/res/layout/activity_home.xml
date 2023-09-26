@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/dp_32"
             android:layout_marginStart="@dimen/dp_32"
             android:scaleType="fitXY"
-            android:background="@drawable/circled_background"
+            android:background="@drawable/darker_circled_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -88,13 +88,27 @@
             app:layout_constraintStart_toStartOf="@id/weather_temp"
             app:layout_constraintEnd_toEndOf="@id/weather_name"/>
 
+        <TextView
+            android:id="@+id/weather_main"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="-----"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/white"
+            android:shadowColor="@color/color_primary_dark"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            app:layout_constraintTop_toBottomOf="@id/weather_brief"
+            app:layout_constraintStart_toStartOf="@id/weather_temp"
+            app:layout_constraintEnd_toEndOf="@id/weather_name"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/days_forecasted"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_16"
             app:layout_constraintTop_toBottomOf="@id/main_background"
             app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -14,7 +14,7 @@ class WeatherService @Inject constructor(private val weatherApiClient: WeatherAp
     suspend fun getWeatherData(): ForecastModel =
         try {
             Log.i(TAG, "Method Called: getWeatherData()")
-            val result: Response<ForecastModel?> = weatherApiClient.getWeatherData("4.6116516", "-74.1059474", "imperial", "078a420a8790df5a431a9faf14d61b67")
+            val result: Response<ForecastModel?> = weatherApiClient.getWeatherData("4.6116516", "-74.1059474", "metric", "078a420a8790df5a431a9faf14d61b67")
             Log.i(TAG, "$result")
             result.body() ?: ForecastModel(emptyList())
         } catch (e: Exception) {
