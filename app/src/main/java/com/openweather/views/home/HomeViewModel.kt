@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.openweather.data.model.ForecastModel
 import com.openweather.domain.WeatherUseCase
+import com.openweather.views.SingleLiveEvent
+import com.openweather.views.ViewEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +22,8 @@ class HomeViewModel @Inject constructor(private val weatherUseCase: WeatherUseCa
     val isLoading = MutableLiveData<Boolean>()
     val forecast = MutableLiveData<ForecastModel?>()
 
+    var singleLiveEvent: SingleLiveEvent<ViewEvent> = SingleLiveEvent()
+
     fun onCreate(){
         getForecast()
     }
@@ -31,9 +35,12 @@ class HomeViewModel @Inject constructor(private val weatherUseCase: WeatherUseCa
 
                 val result: ForecastModel? = weatherUseCase()
                 forecast.value = result
+
                 isLoading.value = false
+                singleLiveEvent.value = ViewEvent.Success("Forecast complete!")
             } catch (e: Exception){
                 Log.e(TAG, "Exception $e")
+                singleLiveEvent.value = ViewEvent.Error(e.message.toString())
             }
         }
     }

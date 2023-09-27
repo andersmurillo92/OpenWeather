@@ -4,13 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.openweather.data.model.ForecastModel
 import com.openweather.data.model.ThreeHoursDataModel
 import com.openweather.data.model.baseURLImage
 import com.openweather.databinding.ActivityHomeBinding
+import com.openweather.views.base.BaseActivity
 import com.openweather.views.home.adapter.DayForecastedAdapter
 import com.openweather.views.interfaces.ItemActionListener
 import com.openweather.views.interfaces.UIBehavior
@@ -18,7 +17,7 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity: AppCompatActivity(), UIBehavior, UIBehavior.RecyclerView, ItemActionListener {
+class HomeActivity: BaseActivity(), UIBehavior, UIBehavior.RecyclerView, ItemActionListener {
 
     private lateinit var binding: ActivityHomeBinding
     private val viewModel: HomeViewModel by viewModels()
@@ -59,7 +58,13 @@ class HomeActivity: AppCompatActivity(), UIBehavior, UIBehavior.RecyclerView, It
     override fun initializeUI() {
         initializeRecyclerView()
         initializeObservables()
-        viewModel.onCreate()
+
+        if (isOnline()) {
+            viewModel.onCreate()
+        } else {
+            binding.progressBar.visibility = View.GONE
+            // TODO("Show no internet message")
+        }
     }
 
     override fun initializeRecyclerView() {
